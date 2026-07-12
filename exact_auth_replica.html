@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1/meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth | AI AutoBlogger Elite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .split-screen { display: flex; height: 100vh; width: 100vw; overflow: hidden; }
+        .visual-side { 
+            flex: 1; 
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000'); 
+            background-size: cover; 
+            background-position: center; 
+            position: relative; 
+        }
+        .visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.6) 0%, rgba(124, 58, 237, 0.4) 100%);
+        }
+        .auth-side { 
+            width: 450px; 
+            background: #ffffff; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 60px; 
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        .input-group input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        .btn-primary {
+            width: 100%;
+            background: #6366f1;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-center: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            color: #64748b;
+        }
+        .social-icon:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+            background: #f8fafc;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 25px 0;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .divider span { padding: 0 10px; }
+        .footer-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #64748b;
+        }
+        .footer-link a {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-screen">
+        <!-- LEFT SIDE: FULL VISUAL -->
+        <div class="visual-side">
+            <div class="visual-overlay"></div>
+            <div style="position: absolute; bottom: 60px; left: 60px; color: white; z-index: 10;">
+                <h2 style="font-size: 42px; font-weight: 800; line-height: 1.1; margin-bottom: 15px;">The Future of<br>Content is<br>Autonomous.</h2>
+                <p style="font-size: 18px; opacity: 0.9; max-width: 400px;">Build your authority, automate your growth, and dominate search results with AI Agentic Workflows.</p>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: AUTH FORM -->
+        <div class="auth-side">
+            <div class="logo-area" style="margin-bottom: 40px; text-align: center;">
+                <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <div style="background: #6366f1; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-center: center; color: white;">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <span style="font-weight: 800; font-size: 20px; color: #0f172a;">AI AutoBlogger Elite</span>
+                </div>
+            </div>
+
+            <div id="auth-container">
+                <!-- REGISTER STATE -->
+                <div id="register-state">
+                    <h2 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 8px; text-align: center;">Create an account</h2>
+                    <p style="font-size: 14px; color: #64748b; text-align: center; margin-bottom: 30px;">Join the elite circle of AI publishers</p>
+                    
+                    <button class="btn-primary" style="background: white; color: #0f172a; border: 1px solid #e2e8f0; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 500;">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width: 18px;">
+                        Continue with Google
+                    </button>
+
+                    <div class="divider"><span>Or</span></div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name">
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Create your password">
+                    </div>
+
+                    <button onclick="switchState('login')" class="btn-primary">Create an account</button>
+
+                    <div class="footer-link">
+                        Already have an account? <a href="javascript:void(0)" onclick="switchState('login')">Login</a>
+                    </div>
+                </div>
+
+                <!-- LOGIN STATE -->
+                <div id="login-state" class="hidden" style="display:none;">
+                    <h2 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 8px; text-align: center;">Welcome Back</h2>
+                    <p style="font-size: 14px; color: #64748b; text-align: center; margin-bottom: 30px;">Log in to your AI command center</p>
+                    
+                    <button class="btn-primary" style="background: white; color: #0f172a; border: 1px solid #e2e8f0; margin-bottom: 20px; display: flex; align-items: center; justify-center: center; gap: 10px; font-weight: 500;">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width: 18px;">
+                        Continue with Google
+                    </button>
+
+                    <div class="divider"><span>Or</span></div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter your password">
+                    </div>
+
+                    <button onclick="switchState('register')" class="btn-primary">Sign In</button>
+
+                    <div class="footer-link">
+                        Already have an account? <a href="javascript:void(0)" onclick="switchState('register')">Create Account</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                <div class="social-icon"><i class="fab fa-twitter"></i></div>
+                <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchState(state) {
+            if (state === 'login') {
+                document.getElementById('register-state').style.display = 'none';
+                document.getElementById('login-state').style.display = 'block';
+            } else {
+                document.getElementById('login-state').style.display = 'none';
+                document.getElementById('register-state').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
